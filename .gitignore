@@ -12,5 +12,16 @@
 *.la
 *.a
 
+# anderes uninteressantes vom Projektordner...
+*.d
+makefile
+*.mk
+.cproject
+.project
+
+
 .metadata/
+abi/
+abi-shared/
+CUTE
 RemoteSystemsTempFiles/
