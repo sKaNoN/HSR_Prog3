@@ -23,5 +23,5 @@ makefile
 .metadata/
 abi/
 abi-shared/
-CUTE
+CUTE/
 RemoteSystemsTempFiles/
