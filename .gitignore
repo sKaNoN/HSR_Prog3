@@ -18,6 +18,7 @@ makefile
 *.mk
 .cproject
 .project
+.xml
 
 
 .metadata/
