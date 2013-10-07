@@ -1,67 +1,57 @@
 #include <iostream>
 #include <sstream>
 
-std::stringstream add(int a, int b) {
-	std::stringstream ss;
-	ss << a+b;
-	return ss;
+int add(int a, int b) {
+	return a+b;
 }
 
-std::stringstream sub(int a, int b) {
-	std::stringstream ss;
-	ss << a-b;
-	return ss;
+int sub(int a, int b) {
+	return a-b;
 }
 
-std::stringstream mult(int a, int b) {
-	std::stringstream ss;
-	ss << a*b;
-	return ss;
+int mult(int a, int b) {
+	return a*b;
 }
 
-std::stringstream divide(int a, int b) {
-	std::stringstream ss;
-	if(b==0) {
-		ss << "Error";
-	} else {
-		ss << a/b;
-	}
-	return ss;
+int divide(int a, int b) {
+	return a/b;
 }
 
-std::stringstream mod(int a, int b) {
-	std::stringstream ss;
-	if(b==0) {
-		ss << "Error";
-	} else {
-		ss << a%b;
-	}
-	return ss;
+int mod(int a, int b) {
+	return a%b;
 }
 
 
 std::stringstream checkOperatorAndCalc(int a, char op, int b) {
-	switch (op){
+	std::stringstream ss;
+	switch (op) {
 		case '+':
-			return add(a,b);
+			ss << add(a,b);
 			break;
 		case '-':
-			return sub(a,b);
+			ss << sub(a,b);
 			break;
 		case '*':
-			return mult(a,b);
+			ss << mult(a,b);
 			break;
 		case '/':
-			return divide(a,b);
+			if(b==0) {
+				ss << "Error";
+			} else {
+				ss << divide(a,b);
+			}
 			break;
 		case '%':
-			return mod(a,b);
+			if(b==0) {
+				ss << "Error";
+			} else {
+				ss << mod(a,b);
+			}
 			break;
 		default:
-			std::stringstream ss;
 			ss << "Error";
-			return ss;
 	}
+	return ss;
 }
 
 std::stringstream calc(std::istream &in) {
