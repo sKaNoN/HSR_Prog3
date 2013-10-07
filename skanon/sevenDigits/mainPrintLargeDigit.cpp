@@ -1,9 +1,12 @@
 #include "printLargeDigit.h"
 #include <iostream>
+#include <sstream>
 
 int main() {
-	unsigned number;
-	unsigned scale{20};
-	std::cin >> number;
-	printLargeDigit(number,scale, std::cout);
+	std::stringstream ss{""};
+	std::string str;
+	std::cin >> str;
+	ss << str;
+
+	printLargeDigit(ss, 3, std::cout);
 }
