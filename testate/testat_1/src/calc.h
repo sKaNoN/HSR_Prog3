@@ -2,7 +2,8 @@
 #define CALC_H_
 
 #include <iosfwd>
+#include <iostream>
 
-std::string calc(std::istream &in);
+std::stringstream calc(std::istream &in);
 
 #endif /* CALC_H_ */

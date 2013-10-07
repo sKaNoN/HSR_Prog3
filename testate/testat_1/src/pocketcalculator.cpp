@@ -1,6 +1,8 @@
 
 #include "calc.h"
+#include <sstream>
 
 void pocketcalculator(std::istream &in, std::ostream &out) {
-	calc(in);
+	std::stringstream result;
+	result = calc(in);
 }
