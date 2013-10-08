@@ -8,5 +8,5 @@ int main() {
 	std::cin >> str;
 	ss << str;
 
-	printLargeDigit(ss, 4, std::cout);
+	printLargeDigit(ss, 10, std::cout);
 }

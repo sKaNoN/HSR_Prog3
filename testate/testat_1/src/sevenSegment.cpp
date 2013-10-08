@@ -1,4 +1,4 @@
-#include "printLargeDigit.h"
+#include "sevenSegment.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -88,7 +88,7 @@ void scaleDigits(std::vector<unsigned> &numbers, unsigned &scale) {
 	}
 }
 
-void printLargeDigit(std::stringstream &number, unsigned scale, std::ostream &out) {
+void sevenSegment(std::stringstream &number, unsigned scale, std::ostream &out) {
 	std::string str = number.str();
 	std::vector<unsigned> numbers;
 
