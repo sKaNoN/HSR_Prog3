@@ -114,12 +114,9 @@ void testMult() {
 void testDivide() {
 	ASSERT_EQUAL(0,divide(3,5));
 	ASSERT_EQUAL(0,divide(0,3));
-	//ASSERT_EQUAL(0,divide(7,0));
-	//ASSERT_EQUAL(0,divide(0,0));
 	ASSERT_EQUAL(0,divide(-1,4));
 	ASSERT_EQUAL(-1,divide(6,-4));
 	ASSERT_EQUAL(1,divide(5,3));
-	//ASSERT_EQUAL(3,divide(3,0));
 	ASSERT_EQUAL(0,divide(0,7));
 	ASSERT_EQUAL(-4,divide(4,-1));
 	ASSERT_EQUAL(0,divide(-4,6));
@@ -128,12 +125,9 @@ void testDivide() {
 void testMod() {
 	ASSERT_EQUAL(3,mod(3,5));
 	ASSERT_EQUAL(0,mod(0,3));
-	//ASSERT_EQUAL(0,mod(7,0));
-	//ASSERT_EQUAL(0,mod(0,0));
 	ASSERT_EQUAL(-1,mod(-1,4));
 	ASSERT_EQUAL(2,mod(6,-4));
 	ASSERT_EQUAL(2,mod(5,3));
-	//ASSERT_EQUAL(3,mod(3,0));
 	ASSERT_EQUAL(0,mod(0,7));
 	ASSERT_EQUAL(0,mod(4,-1));
 	ASSERT_EQUAL(-4,mod(-4,6));
@@ -173,7 +167,6 @@ void testCalc() {
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
-	//TODO add your test here
 	s.push_back(CUTE(testScalingNegative));
 	s.push_back(CUTE(testScalingZero));
 	s.push_back(CUTE(testScalingTwo));
