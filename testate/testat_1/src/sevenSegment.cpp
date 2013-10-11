@@ -5,23 +5,24 @@
 #include <iterator>
 #include <sstream>
 
-void scaleHorizontal(unsigned const number, unsigned const scale, std::vector<std::vector<std::string>> &digits) {
+void scaleHorizontal(unsigned const number, int const scale, std::vector<std::vector<std::string>> &digits) {
 	for_each(digits[number].begin(), digits[number].end(),[&scale](std::string& s) {
 		s.insert(1,scale-1,s.at(1));
 	});
 }
 
-void scaleVertical(unsigned const number, unsigned const scale, std::vector<std::vector<std::string>> &digits) {
+void scaleVertical(unsigned const number, int const scale, std::vector<std::vector<std::string>> &digits) {
 	digits[number].insert(digits[number].begin()+2,scale-1,digits[number].at(1));
 	digits[number].insert(digits[number].begin()+3+scale,scale-1,digits[number].at(2+scale));
 }
 
-std::vector<unsigned> getDigits(std::stringstream &ss, unsigned scale) {
+std::vector<unsigned> getDigits(std::stringstream &ss, int scale) {
 	std::string number = ss.str();
 	std::vector<unsigned> numbers;
+	if (scale == 0) ++scale;
 
 	if (std::isdigit(number.at(0))) {
-		if (number.size() > 50/scale) {
+		if (number.size() > 25/scale) {
 			numbers = {10,11,11,12,11};
 		} else {
 			for_each(number.begin(),number.end(),[&numbers](char c) {
@@ -43,18 +44,18 @@ void print(std::vector<unsigned> const numbers, std::ostream &out, std::vector<s
 	}
 }
 
-void scaleDigits(std::vector<unsigned> const numbers, unsigned const scale, std::vector<std::vector<std::string>> &digits) {
+void scaleDigits(std::vector<unsigned> const numbers, int const scale, std::vector<std::vector<std::string>> &digits) {
 	if (scale>1) {
 		for_each(numbers.begin(), numbers.end(),[&scale, &digits](unsigned i){
-			if (digits[i].size()<=5){
-				scaleHorizontal(i, scale, digits);
-				scaleVertical(i, scale, digits);
+			if (digits[i].size()<=5 && i < 10){
+					scaleHorizontal(i, scale, digits);
+					scaleVertical(i, scale, digits);
 			}
 		});
 	}
 }
 
-void sevenSegment(std::stringstream &ss, unsigned const scale, std::ostream &out) {
+void sevenSegment(std::stringstream &ss, int const scale, std::ostream &out) {
 	std::vector<unsigned> numbers = getDigits(ss, scale);
 
 	std::vector<std::vector<std::string>> digits {

@@ -4,8 +4,12 @@
 
 void pocketcalculator(std::istream &in, std::ostream &out) {
 	std::stringstream result;
-	result = calc(in);
+	std::stringstream tmp;
 	unsigned scale{5};
-	sevenSegment(result, scale, out);
+
+	while (in) {
+		result = calc(in);
+		sevenSegment(result, scale, out);
+	}
 
 }
