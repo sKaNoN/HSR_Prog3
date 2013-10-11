@@ -21,19 +21,17 @@ std::vector<unsigned> getDigits(std::stringstream &ss, int scale) {
 	std::vector<unsigned> numbers;
 	if (scale == 0) ++scale;
 
-	if (number.size() > 25/scale) {
-		return {10,11,11,12,11};
-	} else {
-		for_each(number.begin(),number.end(),[&numbers](char c) {
-			if (std::isdigit(c)){
-				numbers.push_back(c-'0');
-			}
-		});
-	}
+	if (number.size() > 25/scale) return {10,11,11,12,11};
 
-	if (numbers.size()==number.length()) {
-		return numbers;
-	} else return {10,11,11,12,11};
+	for_each(number.begin(),number.end(),[&numbers](char c) {
+		if (std::isdigit(c)){
+			numbers.push_back(c-'0');
+		}
+	});
+
+	if (numbers.size()==number.length()) return numbers;
+
+	return {10,11,11,12,11};
 }
 
 void print(std::vector<unsigned> const numbers, std::ostream &out, std::vector<std::vector<std::string>> const digits) {
@@ -78,7 +76,6 @@ void sevenSegment(std::stringstream &ss, int const scale, std::ostream &out) {
 	scaleDigits(numbers, scale, digits);
 
 	print(numbers, out, digits);
-
 
 }
 
