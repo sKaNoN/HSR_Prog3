@@ -5,97 +5,76 @@
 #include <iterator>
 #include <sstream>
 
-std::vector<std::vector<std::string>> digits {
-	{ " - ", "| |", "   ", "| |", " - " },
-	{ "   ", "  |", "   ", "  |", "   " },
-	{ " - ", "  |", " - ", "|  ", " - " },
-	{ " - ", "  |", " - ", "  |", " - " },
-	{ "   ", "| |", " - ", "  |", "   " },
-	{ " - ", "|  ", " - ", "  |", " - " },
-	{ " - ", "|  ", " - ", "| |", " - " },
-	{ " - ", "  |", "   ", "  |", "   " },
-	{ " - ", "| |", " - ", "| |", " - " },
-	{ " - ", "| |", " - ", "  |", " - " },
-	{ " - ", "|  ", " - ", "|  ", " - " },
-	{ "   ", "   ", " - ", "|  ", "   " },
-	{ "   ", "   ", " - ", "| |", " - " }};
-
-void scaleHorizontal(unsigned number, unsigned scale) {
-	for_each(digits[number].begin(), digits[number].end(),
-			[&scale](std::string& s) {
-				for (unsigned j{0};j<scale-1;j++) {
-					s.insert(s.end()-1, s.at(1));
-				}
-
-			});
+void scaleHorizontal(unsigned const number, unsigned const scale, std::vector<std::vector<std::string>> &digits) {
+	for_each(digits[number].begin(), digits[number].end(),[&scale](std::string& s) {
+		s.insert(1,scale-1,s.at(1));
+	});
 }
 
-void scaleVertical(unsigned number, unsigned scale) {
-	for (unsigned i{0}; i<scale-1; i++) {
-		digits[number].insert(digits[number].begin() + 2 + i,
-				digits[number].at(1));
-		digits[number].insert(digits[number].begin() + 5 + i,
-				digits[number].at(4 + i));
-	}
+void scaleVertical(unsigned const number, unsigned const scale, std::vector<std::vector<std::string>> &digits) {
+	digits[number].insert(digits[number].begin()+2,scale-1,digits[number].at(1));
+	digits[number].insert(digits[number].begin()+3+scale,scale-1,digits[number].at(2+scale));
 }
 
-void printError(std::vector<unsigned> &numbers){
-	numbers.push_back(10);
-	numbers.push_back(11);
-	numbers.push_back(11);
-	numbers.push_back(12);
-	numbers.push_back(11);
-}
+std::vector<unsigned> getDigits(std::stringstream &ss, unsigned scale) {
+	std::string number = ss.str();
+	std::vector<unsigned> numbers;
 
-void getDigits(std::vector<unsigned> &numbers, std::string str) {
-	if (str.compare("Error")==0) {
-		printError(numbers);
-	} else if (str.size()>10) {
-		printError(numbers);
-	} else if (str.at(0)=='-') {
-		printError(numbers);
-	} else {
-		unsigned i{0};
-		for_each(str.begin(),str.end(),[&i, &numbers](char c) {
-			i = c-'0';
-			numbers.push_back(i);
+	if (std::isdigit(number.at(0))) {
+		if (number.size() > 50/scale) {
+			numbers = {10,11,11,12,11};
+		} else {
+			for_each(number.begin(),number.end(),[&numbers](char c) {
+				numbers.push_back(c-'0');
 		});
-	}
+		}
+	} else numbers = {10,11,11,12,11};
+
+	return numbers;
 }
 
-void print(std::vector<unsigned> &numbers, std::ostream &out) {
+void print(std::vector<unsigned> const numbers, std::ostream &out, std::vector<std::vector<std::string>> const digits) {
 
 	for (size_t i{0}; i < digits[numbers.at(0)].size();i++) {
-		for_each(numbers.begin(),numbers.end(),[&out, &i](unsigned j){
+		for_each(numbers.begin(),numbers.end(),[&out, &i, &digits](unsigned j){
 			out << digits[j].at(i);
 		});
 		out << "\n";
 	}
 }
 
-bool isNotScaled(unsigned i){
-	return (digits[i].size()<=5);
-}
-
-void scaleDigits(std::vector<unsigned> &numbers, unsigned &scale) {
+void scaleDigits(std::vector<unsigned> const numbers, unsigned const scale, std::vector<std::vector<std::string>> &digits) {
 	if (scale>1) {
-		for_each(numbers.begin(), numbers.end(),[&scale](unsigned i){
-			if (isNotScaled(i)){
-				scaleHorizontal(i, scale);
-				scaleVertical(i, scale);
+		for_each(numbers.begin(), numbers.end(),[&scale, &digits](unsigned i){
+			if (digits[i].size()<=5){
+				scaleHorizontal(i, scale, digits);
+				scaleVertical(i, scale, digits);
 			}
 		});
 	}
 }
 
-void sevenSegment(std::stringstream &number, unsigned scale, std::ostream &out) {
-	std::string str = number.str();
-	std::vector<unsigned> numbers;
+void sevenSegment(std::stringstream &ss, unsigned const scale, std::ostream &out) {
+	std::vector<unsigned> numbers = getDigits(ss, scale);
 
-	getDigits(numbers, str);
-	scaleDigits(numbers, scale);
+	std::vector<std::vector<std::string>> digits {
+		{ " - ", "| |", "   ", "| |", " - " },
+		{ "   ", "  |", "   ", "  |", "   " },
+		{ " - ", "  |", " - ", "|  ", " - " },
+		{ " - ", "  |", " - ", "  |", " - " },
+		{ "   ", "| |", " - ", "  |", "   " },
+		{ " - ", "|  ", " - ", "  |", " - " },
+		{ " - ", "|  ", " - ", "| |", " - " },
+		{ " - ", "  |", "   ", "  |", "   " },
+		{ " - ", "| |", " - ", "| |", " - " },
+		{ " - ", "| |", " - ", "  |", " - " },
+		{ " - ", "|  ", " - ", "|  ", " - " },
+		{ "   ", "   ", " - ", "|  ", "   " },
+		{ "   ", "   ", " - ", "| |", " - " }};
 
-	print(numbers, out);
+	scaleDigits(numbers, scale, digits);
+
+	print(numbers, out, digits);
 
 
 }
