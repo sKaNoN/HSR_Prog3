@@ -21,17 +21,19 @@ std::vector<unsigned> getDigits(std::stringstream &ss, int scale) {
 	std::vector<unsigned> numbers;
 	if (scale == 0) ++scale;
 
-	if (std::isdigit(number.at(0))) {
-		if (number.size() > 25/scale) {
-			numbers = {10,11,11,12,11};
-		} else {
-			for_each(number.begin(),number.end(),[&numbers](char c) {
+	if (number.size() > 25/scale) {
+		return {10,11,11,12,11};
+	} else {
+		for_each(number.begin(),number.end(),[&numbers](char c) {
+			if (std::isdigit(c)){
 				numbers.push_back(c-'0');
+			}
 		});
-		}
-	} else numbers = {10,11,11,12,11};
+	}
 
-	return numbers;
+	if (numbers.size()==number.length()) {
+		return numbers;
+	} else return {10,11,11,12,11};
 }
 
 void print(std::vector<unsigned> const numbers, std::ostream &out, std::vector<std::vector<std::string>> const digits) {
