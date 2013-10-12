@@ -55,12 +55,17 @@ std::stringstream checkOperatorAndCalc(int a, char op, int b) {
 }
 
 std::stringstream calc(std::istream &in) {
-	int a {0};
-	int b {0};
-	char op {'?'};
-	in >> a;
-	in >> op;
-	in >> b;
-
-	return checkOperatorAndCalc(a,op,b);
+	try {
+		int a {0};
+		int b {0};
+		char op {'?'};
+		in >> a;
+		in >> op;
+		in >> b;
+		return checkOperatorAndCalc(a,op,b);
+	} catch (...) {
+		std::stringstream ss;
+		ss << "Error";
+		return ss;
+	}
 }

@@ -162,7 +162,15 @@ void testCalc() {
 
 	std::stringstream ss5;
 	ss5 << "-12 / 6";
-	ASSERT_EQUAL("Error", calc(ss4).str());
+	ASSERT_EQUAL("-2", calc(ss5).str());
+
+	std::stringstream ss6;
+	ss6 << "12 / -6";
+	ASSERT_EQUAL("-2", calc(ss6).str());
+
+	std::stringstream ss7;
+	ss7 << "irgend etwas das kein sinn ergibt";
+	ASSERT_EQUAL("Error", calc(ss7).str());
 }
 
 void runAllTests(int argc, char const *argv[]){
@@ -189,7 +197,6 @@ void runAllTests(int argc, char const *argv[]){
 
 int main(int argc, char const *argv[]){
     runAllTests(argc,argv);
-    return 0;
 }
 
 
