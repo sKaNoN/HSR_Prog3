@@ -4,6 +4,7 @@
 #include "cute_runner.h"
 #include "sevenSegment.h"
 #include "calc.h"
+#include "pocketcalculator.h"
 #include <iostream>
 #include <sstream>
 
@@ -173,6 +174,14 @@ void testCalc() {
 	ASSERT_EQUAL("Error", calc(ss7).str());
 }
 
+void testPocketcalculator() {
+	std::stringstream instream;
+	std::ostringstream outstream;
+	instream << "6*7" << std::endl;
+	pocketcalculator(instream, outstream);
+	ASSERT_EQUAL("      --- \n|   |    |\n|   |    |\n|   |    |\n ---  --- \n    ||    \n    ||    \n    ||    \n      --- \n", outstream.str());
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(testScalingNegative));
@@ -190,6 +199,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testMod));
 	s.push_back(CUTE(testCalc));
 	s.push_back(CUTE(testCheckOperatorAndCalc));
+	s.push_back(CUTE(testPocketcalculator));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");

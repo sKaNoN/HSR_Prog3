@@ -1,5 +1,5 @@
 <testsuites>
-	<testsuite name="AllTests" tests="15">
+	<testsuite name="AllTests" tests="16">
 		<testcase classname="AllTests" name="testScalingNegative"/>
 		<testcase classname="AllTests" name="testScalingZero"/>
 		<testcase classname="AllTests" name="testScalingTwo"/>
@@ -15,5 +15,6 @@
 		<testcase classname="AllTests" name="testMod"/>
 		<testcase classname="AllTests" name="testCalc"/>
 		<testcase classname="AllTests" name="testCheckOperatorAndCalc"/>
+		<testcase classname="AllTests" name="testPocketcalculator"/>
 	</testsuite>
 </testsuites>
