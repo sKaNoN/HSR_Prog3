@@ -1,0 +1,6 @@
+<testsuites>
+	<testsuite name="AllTests" tests="2">
+		<testcase classname="AllTests" name="isPalindromeTrueTest"/>
+		<testcase classname="AllTests" name="isPalindromeFalseTest"/>
+	</testsuite>
+</testsuites>
