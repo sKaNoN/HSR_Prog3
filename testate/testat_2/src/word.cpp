@@ -32,8 +32,12 @@ void Word::read(std::istream &in){
 	value = w; //oder value.push_back(w); ?
 }
 
-bool Word::operator ==(Word otherword) {
+bool Word::operator==(Word otherword) {
 	return value == otherword.value;
+}
+
+bool Word::operator<(Word otherword) {
+	return value < otherword.value;
 }
 
 std::ostream& operator<<(std::ostream &out, Word const& word){
