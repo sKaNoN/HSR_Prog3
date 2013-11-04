@@ -26,4 +26,8 @@ abi/
 abi-shared/
 CUTE/
 RemoteSystemsTempFiles/
+<<<<<<< HEAD
 .DS_Store
+=======
+Debug/
+>>>>>>> 6af93bd6ff6998f945d07895570208e8c66da141
