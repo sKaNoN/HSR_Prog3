@@ -21,7 +21,7 @@ void Word::read(std::istream &in){
 	std::string w;
 	while(in.get(character) && !std::isalpha(character));
 	w.push_back(character);
-	while( std::isalpha(character)) {
+	while(in.get(character) && std::isalpha(character)) {
 		w.push_back(character);
 	}
 	value = w;
