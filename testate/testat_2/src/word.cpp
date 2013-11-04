@@ -28,7 +28,7 @@ void Word::read(std::istream &in){
 	while(in.get(character) && std::isalpha(character)) {
 		w.push_back(tolower(character));
 	}
-	if(w.length()==0) throw std::invalid_argument("No Word-Input Found");
+	//if(w.length()==0) throw std::invalid_argument("No Word-Input Found");
 	value = w; //oder value.push_back(w); ?
 }
 
