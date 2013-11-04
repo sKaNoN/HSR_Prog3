@@ -2,6 +2,7 @@
 #include "ide_listener.h"
 #include "xml_listener.h"
 #include "cute_runner.h"
+#include "word.h"
 
 void thisIsATest() {
 	ASSERTM("start writing tests", false);	
@@ -16,10 +17,10 @@ void runAllTests(int argc, char const *argv[]){
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
 }
 
-int main(int argc, char const *argv[]){
-    runAllTests(argc,argv);
-    return 0;
-}
+//int main(int argc, char const *argv[]){
+//    runAllTests(argc,argv);
+//    return 0;
+//}
 
 
 

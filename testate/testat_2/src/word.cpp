@@ -17,10 +17,14 @@ void Word::print(std::ostream& out) const{
 }
 
 void Word::read(std::istream &in){
-
+	char character{};
 	std::string w;
-	in >> w;
-	value.insert(value.end(),w.begin(),w.end());
+	while(in.get(character) && !std::isalpha(character));
+	w.push_back(character);
+	while( std::isalpha(character)) {
+		w.push_back(character);
+	}
+	value = w;
 
 }
 
