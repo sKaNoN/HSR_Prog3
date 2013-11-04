@@ -1,4 +1,4 @@
-#include "Word.h"
+#include "Word-Sol.h"
 #include <algorithm>
 #include <stdexcept>
 #include <istream>

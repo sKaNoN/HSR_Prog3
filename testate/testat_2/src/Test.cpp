@@ -1,3 +1,4 @@
+#include "kwic.h"
 #include "cute.h"
 #include "ide_listener.h"
 #include "xml_listener.h"
@@ -18,7 +19,10 @@ void runAllTests(int argc, char const *argv[]){
 
 int main(int argc, char const *argv[]){
     runAllTests(argc,argv);
+    kwic(std::cin, std::cout);
+
     return 0;
+
 }
 
 
