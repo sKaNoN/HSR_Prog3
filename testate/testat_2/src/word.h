@@ -8,6 +8,7 @@ class Word{
 	std::string value;
 	public:
 		Word(std::string str);
+		Word(std::istream &in);
 		void read(std::istream& in);
 		void print(std::ostream& out) const;
 };
