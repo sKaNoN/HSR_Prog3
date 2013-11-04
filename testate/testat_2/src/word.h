@@ -11,6 +11,7 @@ class Word{
 		Word(std::istream &in);
 		void read(std::istream& in);
 		void print(std::ostream& out) const;
+		bool operator== (Word otherword);
 };
 
 std::ostream& operator <<(std::ostream &out, Word const& word);

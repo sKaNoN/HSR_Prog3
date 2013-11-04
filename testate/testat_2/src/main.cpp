@@ -16,4 +16,6 @@
 //		std::cout << word << "\n";
 ////		stream >> word;
 ////		std::cout << word << "\n";
+//		std::cout << "Is=" << (Word{"Blubb"} == Word{"Blubb"})<<"\n";
+//		std::cout << "Is=" << (Word{"Blubb"} == Word{"Blu bbbb"})<<"\n";
 //}
