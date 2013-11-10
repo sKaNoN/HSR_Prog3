@@ -87,6 +87,7 @@ void wordInputOperatorFails(){
 	Word w{"word"};
 	in >> w;
 	ASSERT(in.fail());
+	ASSERT_EQUAL("word",w);
 }
 void wordInputOperatorParsesSentences(){
 	std::istringstream in{"Hello,world!"};
