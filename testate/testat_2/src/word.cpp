@@ -41,7 +41,7 @@ std::istream& Word::read(std::istream &in){
 		 in.clear(std::ios::failbit);
 	else {
 		value=w;
-		if (in.eof()) in.clear(); // might have read into stream eof, but still got a word
+		if (in.eof()) in.clear();
 	}
 
 	return in;
