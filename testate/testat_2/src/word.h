@@ -3,16 +3,18 @@
 
 #include <string>
 #include <iosfwd>
+#include <boost/operators.hpp>
 
 class Word{
 	std::string value;
 	public:
+		Word()=default;
 		Word(std::string str);
 		Word(std::istream &in);
-		void read(std::istream& in);
-		void print(std::ostream& out) const;
-		bool operator== (Word otherword);
-		bool operator< (Word otherword);
+		std::istream& read(std::istream& in);
+		std::ostream& print(std::ostream& out) const;
+		bool operator== (Word const &otherword) const;
+		bool operator< (Word const &otherword) const;
 };
 
 std::ostream& operator <<(std::ostream &out, Word const& word);

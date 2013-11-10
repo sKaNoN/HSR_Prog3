@@ -6,7 +6,15 @@
 #include <sstream>
 
 
-Word::Word(std::string str){
+bool checkWord(std::string const &w){
+	return (w.empty()
+	   ||count_if(w.begin(),w.end(),[](char c){return !isalpha(c);}));
+}
+
+Word::Word(std::string const str){
+	if (checkWord(str))
+		throw std::invalid_argument{"Invalid word characters"};
+
 	std::stringstream ss;
 	ss << str;
 	read(ss);
@@ -16,27 +24,34 @@ Word::Word(std::istream &in){
 	read(in);
 }
 
-void Word::print(std::ostream& out) const{
+std::ostream& Word::print(std::ostream& out) const{
 	out << value;
+	return out;
 }
 
-void Word::read(std::istream &in){
+std::istream& Word::read(std::istream &in){
 	char character{};
-	std::string w;
+	std::string w{};
 	while(in.get(character) && !std::isalpha(character));
-	if(std::isalpha(character)) w.push_back(tolower(character));
-	while(in.get(character) && std::isalpha(character)) {
-		w.push_back(tolower(character));
+	while (std::isalpha(character)){
+		w += character;
+		if (!in.get(character)) break;
 	}
-	//if(w.length()==0) throw std::invalid_argument("No Word-Input Found");
-	value = w; //oder value.push_back(w); ?
+	if (checkWord(w))
+		 in.clear(std::ios::failbit);
+	else {
+		value=w;
+		if (in.eof()) in.clear(); // might have read into stream eof, but still got a word
+	}
+
+	return in;
 }
 
-bool Word::operator==(Word otherword) {
+bool Word::operator==(Word const &otherword) const {
 	return value == otherword.value;
 }
 
-bool Word::operator<(Word otherword) {
+bool Word::operator<(Word const &otherword) const {
 	return value < otherword.value;
 }
 

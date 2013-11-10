@@ -6,7 +6,7 @@
 #include "word.h"
 
 void thisIsATest() {
-	ASSERTM("start writing tests", false);	
+	ASSERTM("start writing tests", false);
 }
 
 void runAllTests(int argc, char const *argv[]){
@@ -19,13 +19,12 @@ void runAllTests(int argc, char const *argv[]){
 }
 
 
-int main(int argc, char const *argv[]){
-    runAllTests(argc,argv);
-    kwic(std::cin, std::cout);
-
-    return 0;
-
-}
+//int main(int argc, char const *argv[]){
+//    runAllTests(argc,argv);
+//
+//    return 0;
+//
+//}
 
 
 
