@@ -5,7 +5,7 @@
 #include <iosfwd>
 #include <boost/operators.hpp>
 
-class Word{
+class Word : boost::equality_comparable<Word,char const *>{
 	std::string value;
 	public:
 		Word()=default;
@@ -15,6 +15,7 @@ class Word{
 		std::ostream& print(std::ostream& out) const;
 		bool operator== (Word const &otherword) const;
 		bool operator< (Word const &otherword) const;
+		bool operator== (char const *otherptr) const;
 };
 
 std::ostream& operator <<(std::ostream &out, Word const& word);

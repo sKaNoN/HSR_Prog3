@@ -1,12 +1,15 @@
 <testsuites>
-	<testsuite name="AllTests" tests="4">
+	<testsuite name="AllTests" tests="11">
 		<testcase classname="AllTests" name="testKwicWith1LineInput"/>
 		<testcase classname="AllTests" name="testKwicWith2LineInput"/>
-		<testcase classname="AllTests" name="testKwicWithCasedWords">
-			<failure message="../src/Test.cpp:42 testKwicWithCasedWords: &quot;an an and and \\n&quot; &quot;an and and an \\n&quot; &quot;and and an an \\n&quot; &quot;and an an and \\n&quot; == out.str() expected:	an an and and \nan and and an \nand and an an \nand an an and \n	but was:	An aN anD And \nAnd An aN anD \naN anD And An \nanD And An aN \n	">
-testKwicWithCasedWords: &quot;an an and and \\n&quot; &quot;an and and an \\n&quot; &quot;and and an an \\n&quot; &quot;and an an and \\n&quot; == out.str() expected:	an an and and \nan and and an \nand and an an \nand an an and \n	but was:	An aN anD And \nAnd An aN anD \naN anD And An \nanD And An aN \n	
-			</failure>
-		</testcase>
+		<testcase classname="AllTests" name="testKwicWithCasedWords"/>
 		<testcase classname="AllTests" name="testKwicWithLeetWords"/>
+		<testcase classname="AllTests" name="testStringConstructor"/>
+		<testcase classname="AllTests" name="emptyWordNotAllowed"/>
+		<testcase classname="AllTests" name="wordLessThan"/>
+		<testcase classname="AllTests" name="wordOutputOperator"/>
+		<testcase classname="AllTests" name="wordInputOperatorNormal"/>
+		<testcase classname="AllTests" name="wordInputOperatorFails"/>
+		<testcase classname="AllTests" name="wordInputOperatorParsesSentences"/>
 	</testsuite>
 </testsuites>
