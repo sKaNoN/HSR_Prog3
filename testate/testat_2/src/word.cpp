@@ -55,6 +55,11 @@ bool Word::operator<(Word const &otherword) const {
 	return value < otherword.value;
 }
 
+bool Word::operator==(char const *otherptr) const {
+	std::string otherword{otherptr};
+	return value == otherword;
+}
+
 std::ostream& operator<<(std::ostream &out, Word const& word){
 	word.print(out);
 	return out;

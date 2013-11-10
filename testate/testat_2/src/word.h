@@ -15,6 +15,7 @@ class Word{
 		std::ostream& print(std::ostream& out) const;
 		bool operator== (Word const &otherword) const;
 		bool operator< (Word const &otherword) const;
+		bool operator== (char const *otherptr) const;
 };
 
 std::ostream& operator <<(std::ostream &out, Word const& word);
