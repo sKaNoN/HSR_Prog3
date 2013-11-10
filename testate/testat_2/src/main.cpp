@@ -2,6 +2,6 @@
 #include <iostream>
 #include <sstream>
 
-int main() {
-	kwic(std::cin, std::cout);
-}
+//int main() {
+//	kwic(std::cin, std::cout);
+//}
