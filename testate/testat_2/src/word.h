@@ -5,7 +5,7 @@
 #include <iosfwd>
 #include <boost/operators.hpp>
 
-class Word{
+class Word : boost::equality_comparable<Word,char const *>{
 	std::string value;
 	public:
 		Word()=default;

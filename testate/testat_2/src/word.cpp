@@ -2,8 +2,8 @@
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
-#include <iterator>
 #include <sstream>
+#include <cctype>
 
 
 bool checkWord(std::string const &w){
@@ -34,7 +34,7 @@ std::istream& Word::read(std::istream &in){
 	std::string w{};
 	while(in.get(character) && !std::isalpha(character));
 	while (std::isalpha(character)){
-		w += character;
+		w += std::tolower(character);
 		if (!in.get(character)) break;
 	}
 	if (checkWord(w))
