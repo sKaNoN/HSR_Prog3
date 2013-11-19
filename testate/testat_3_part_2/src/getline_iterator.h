@@ -3,26 +3,27 @@
 
 #include <boost/operators.hpp>
 #include <string>
-#include <iosfwd>
+#include <iostream>
 
-struct line_iterator : boost::input_iterator_helper<line_iterator, std::string> {
+struct getline_iterator : boost::input_iterator_helper<getline_iterator, std::string> {
 
-	explicit line_iterator(std::istream &input):in(input) {
+	explicit getline_iterator(std::istream &input):in(input) {
 		++(*this);
 	}
 
-	line_iterator();
+	getline_iterator();
 
 	value_type operator *() {
 		return value;
 	}
 
-	line_iterator& operator++() {
+	getline_iterator& operator++() {
 		std::getline(in, value);
+		if (in.eof() && value.size()) in.clear();
 		return *this;
 	}
 
-	bool operator==(const line_iterator& other) const;
+	bool operator==(const getline_iterator& other) const;
 
 private:
 	std::istream &in;

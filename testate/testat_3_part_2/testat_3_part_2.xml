@@ -1,0 +1,8 @@
+<testsuites>
+	<testsuite name="AllTests" tests="4">
+		<testcase classname="AllTests" name="DefaultEqualsEmpty"/>
+		<testcase classname="AllTests" name="InputConstructorNotEmpty"/>
+		<testcase classname="AllTests" name="ReadsLineCorrectly"/>
+		<testcase classname="AllTests" name="ReadsMultipleLineCorrectly"/>
+	</testsuite>
+</testsuites>
