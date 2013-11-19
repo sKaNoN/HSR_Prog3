@@ -10,4 +10,6 @@ line_iterator::line_iterator():in(empty) {
 }
 
 
-
+bool line_iterator::operator==(const line_iterator& other) const {
+	 return !in.good() && !other.in.good();
+}

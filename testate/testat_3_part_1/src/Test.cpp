@@ -5,9 +5,9 @@
 #include <functional>
 #include <cmath>
 
+using namespace std::placeholders;
+
 void xPlusY() {
-	using std::placeholders::_1;
-	using std::placeholders::_2;
 	auto func=std::bind(std::plus<double>{}, _1, _2);
 	double x = 2;
 	double y = 5;
@@ -15,8 +15,6 @@ void xPlusY() {
 }
 
 void twoXMinusYthird() {
-	using std::placeholders::_1;
-	using std::placeholders::_2;
 	auto firstinner=std::bind(std::multiplies<double>{}, 2, _1);
 	auto secondinner=std::bind(std::divides<double>{}, _1, 3);
 	auto func=std::bind(std::minus<double>{}, bind(firstinner,_1), bind(secondinner,_2));
@@ -26,8 +24,6 @@ void twoXMinusYthird() {
 }
 
 void squaredXmodY() {
-	using std::placeholders::_1;
-	using std::placeholders::_2;
 	auto square=std::bind(std::multiplies<unsigned>{}, _1, _1);
 	auto func=std::bind(std::modulus<unsigned>{}, bind(square,_1), _2);
 	unsigned x = 2;
@@ -36,8 +32,6 @@ void squaredXmodY() {
 }
 
 void squareRootXpowered() {
-	using std::placeholders::_1;
-	using std::placeholders::_2;
 
 	struct sqrt_functor {
 		double operator()(double y) { return sqrt(y); }
@@ -53,8 +47,6 @@ void squareRootXpowered() {
 
 
 void wtf() {
-	using std::placeholders::_1;
-	using std::placeholders::_2;
 
 	struct sqrt_functor {
 		double operator()(double y) { return sqrt(y); }

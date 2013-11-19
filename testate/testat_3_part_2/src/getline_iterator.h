@@ -3,6 +3,7 @@
 
 #include <boost/operators.hpp>
 #include <string>
+#include <iosfwd>
 
 struct line_iterator : boost::input_iterator_helper<line_iterator, std::string> {
 
@@ -18,17 +19,11 @@ struct line_iterator : boost::input_iterator_helper<line_iterator, std::string> 
 
 	line_iterator& operator++() {
 		std::getline(in, value);
-
 		return *this;
 	}
 
-	bool operator==(const line_iterator& other) const {
-		 return !in.good() && !other.in.good();
-		 /*if iostream is included or moved to cpp
-		  * Test.cpp seems to have problem with #include "cute.h" ??????
-	*/
+	bool operator==(const line_iterator& other) const;
 
-	}
 private:
 	std::istream &in;
 	std::string value{};
