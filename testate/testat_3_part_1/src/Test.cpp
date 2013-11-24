@@ -39,6 +39,8 @@ void squareRootXpowered() {
 
 	auto square=std::bind(std::multiplies<double>{}, _1, _1);
 	auto func=std::bind(sqrtfnc, bind(square,_1));
+	//Alternative ohne struct:
+	//auto func=std::bind(static_cast<double(*)(double)>(sqrt),bind(square,_1));
 
 	double x = 2;
 	ASSERT_EQUAL((sqrt(x * x)),func(x));
