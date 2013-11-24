@@ -4,6 +4,6 @@
 		<testcase classname="AllTests" name="twoXMinusYthird"/>
 		<testcase classname="AllTests" name="squaredXmodY"/>
 		<testcase classname="AllTests" name="squareRootXpowered"/>
-		<testcase classname="AllTests" name="wtf"/>
+		<testcase classname="AllTests" name="complex"/>
 	</testsuite>
 </testsuites>

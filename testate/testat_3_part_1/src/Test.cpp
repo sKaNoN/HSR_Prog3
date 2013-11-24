@@ -39,14 +39,13 @@ void squareRootXpowered() {
 
 	auto square=std::bind(std::multiplies<double>{}, _1, _1);
 	auto func=std::bind(sqrtfnc, bind(square,_1));
-	//auto func=std::bind(static_cast<double(*)(double)>(sqrt),bind(square,_1));
 
 	double x = 2;
 	ASSERT_EQUAL((sqrt(x * x)),func(x));
 }
 
 
-void wtf() {
+void complex() {
 
 	struct sqrt_functor {
 		double operator()(double y) { return sqrt(y); }
@@ -58,7 +57,7 @@ void wtf() {
 
 	auto func=std::bind(std::minus<double>{}, bind(sqrtfnc,bind(squarerootinner,_1,_2)),bind(half,_1));
 
-	double x = 20; //problem mit 2...
+	double x = 20;
 	double y = 5;
 	ASSERT_EQUAL((-(x/2)+sqrt( (x/2)*(x/2) - y )),func(x,y));
 
@@ -70,7 +69,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(twoXMinusYthird));
 	s.push_back(CUTE(squaredXmodY));
 	s.push_back(CUTE(squareRootXpowered));
-	s.push_back(CUTE(wtf));
+	s.push_back(CUTE(complex));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");

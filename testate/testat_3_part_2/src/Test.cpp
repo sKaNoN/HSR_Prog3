@@ -25,21 +25,20 @@ void ReadsLineCorrectly() {
 	std::istringstream in{"hello\n"};
 		getline_iterator it{in};
 
-		ASSERT_EQUAL("hello", *it++);
+		ASSERT("hello" == *it++);
 }
 
 void ReadsMultipleLineCorrectly() {
 	std::istringstream in{"hello\nworld\n"};
 		getline_iterator it{in};
 
-		ASSERT_EQUAL("hello", *it++);
-		ASSERT_EQUAL("world", *it++);
+		ASSERT("hello" == *it++);
+		ASSERT("world" == *it++);
 
 }
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
-	//TODO add your test here
 	s.push_back(CUTE(DefaultEqualsEmpty));
 	s.push_back(CUTE(InputConstructorNotEmpty));
 	s.push_back(CUTE(ReadsLineCorrectly));
