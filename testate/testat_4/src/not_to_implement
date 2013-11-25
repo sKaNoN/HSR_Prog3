@@ -1,0 +1,14 @@
+The following functions of std::vector you should not implement:
+- allocator template paramter and functions using it
+- getallocator
+- reserve(),max_size()
+- operator=() -- automatically provided one should be OK
+- assign()
+- data()
+- shrink_to_fit()
+- emplace(), emplace_back(), insert()
+- swap
+- comparison opperators
+- all rvalue-reference overloads (unless you want to)
+
+But you must implement all other members of std::vector by delegating to it.
