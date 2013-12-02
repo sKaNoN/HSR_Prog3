@@ -1,0 +1,16 @@
+<testsuites>
+	<testsuite name="AllTests" tests="12">
+		<testcase classname="AllTests" name="DefaultConstructor"/>
+		<testcase classname="AllTests" name="InitializerListConstructor"/>
+		<testcase classname="AllTests" name="IteratorConstructor"/>
+		<testcase classname="AllTests" name="OtherConstructor"/>
+		<testcase classname="AllTests" name="NegativeIndex"/>
+		<testcase classname="AllTests" name="EraseAndClear"/>
+		<testcase classname="AllTests" name="PushAndPop"/>
+		<testcase classname="AllTests" name="Resize"/>
+		<testcase classname="AllTests" name="NonConstIterators"/>
+		<testcase classname="AllTests" name="ConstIterators"/>
+		<testcase classname="AllTests" name="ReverseIterators"/>
+		<testcase classname="AllTests" name="ConstReverseIterators"/>
+	</testsuite>
+</testsuites>

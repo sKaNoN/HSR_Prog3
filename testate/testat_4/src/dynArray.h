@@ -34,12 +34,12 @@ public:
 	T & back() {return v.back();}
 	T const& back() const { return v.back();}
 
-	T & at(size_type pos) {
+	T & at(int pos) { 						//warning with size_type, da unsigned value
 		if (pos<0) return v.at(size()+pos);
 		else return v.at(pos);
 	}
 
-	T const& at(size_type pos) const {
+	T const& at(int pos) const {
 		if (pos<0) return v.at(size()+pos);
 		else return v.at(pos);
 	}
@@ -48,8 +48,8 @@ public:
 	T const & operator[]( size_type pos ) const { return at(pos);}
 
 	void clear(){v.clear();}
-	iterator erase( const_iterator pos ) {return v.erease(pos);}
-	iterator erase( const_iterator first, const_iterator last ) {return v.erease(first,last);}
+	iterator erase( const_iterator pos ) {return v.erase(pos);}
+	iterator erase( const_iterator first, const_iterator last ) {return v.erase(first,last);}
 
 	void push_back( const T& value ) { v.push_back(value);}
 	void pop_back () {v.pop_back();}
@@ -57,12 +57,12 @@ public:
 	void resize( size_type count ) { v.resize(count);}
 	void resize( size_type count, const T& value) {v.resize(count, value);}
 
-	iterator begin() const {return v.begin();}
-	iterator end() const {return v.end();}
+	iterator begin() {return v.begin();}
+	iterator end() {return v.end();}
 	const_iterator cbegin() const {return v.cbegin();}
 	const_iterator cend() const {return v.cend();}
-	reverse_iterator rbegin() const {return v.rbegin();}
-	reverse_iterator rend() const {return v.rend();}
+	reverse_iterator rbegin() {return v.rbegin();}
+	reverse_iterator rend() {return v.rend();}
 	const_reverse_iterator crbegin() const {return v.crbegin();}
 	const_reverse_iterator crend() const {return v.crend();}
 };
