@@ -163,10 +163,6 @@ void runAllTests(int argc, char const *argv[]){
 
 int main(int argc, char const *argv[]){
     runAllTests(argc,argv);
-    dynArray<char> a1{};
-    dynArray<int> a2{1,2,3,4,5}; // initializer_list
-    dynArray<double> a3(10,3.14); // count + value
-    dynArray<std::string> a4(std::istream_iterator<std::string>{std::cin},std::istream_iterator<std::string>{});
     return 0;
 }
 
