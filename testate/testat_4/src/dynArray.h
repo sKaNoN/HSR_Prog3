@@ -67,4 +67,9 @@ public:
 	const_reverse_iterator crend() const {return v.crend();}
 };
 
+template<typename T>
+dynArray<T> makedynArray(std::initializer_list<T> il) {
+	return dynArray<T>(il);
+}
+
 #endif /* DYNARRAY_H_ */

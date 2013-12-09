@@ -133,6 +133,14 @@ void ConstReverseIterators() {
 	ASSERT_EQUAL("olleh", str);
 }
 
+void Factory() {
+	makedynArray({"hello", "world"});
+	dynArray<std::string> dyn{"hello", "world"};
+	ASSERT_EQUAL("hello", dyn.at(0));
+	ASSERT_EQUAL("world", dyn[1]);
+	ASSERT_EQUAL(2, dyn.size());
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(DefaultConstructor));
@@ -147,6 +155,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(ConstIterators));
 	s.push_back(CUTE(ReverseIterators));
 	s.push_back(CUTE(ConstReverseIterators));
+	s.push_back(CUTE(Factory));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
@@ -154,6 +163,10 @@ void runAllTests(int argc, char const *argv[]){
 
 int main(int argc, char const *argv[]){
     runAllTests(argc,argv);
+    dynArray<char> a1{};
+    dynArray<int> a2{1,2,3,4,5}; // initializer_list
+    dynArray<double> a3(10,3.14); // count + value
+    dynArray<std::string> a4(std::istream_iterator<std::string>{std::cin},std::istream_iterator<std::string>{});
     return 0;
 }
 
